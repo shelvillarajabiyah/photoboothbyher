@@ -11,7 +11,7 @@ body {
     color: #840018;
 }
 
-/* Navigation*/
+/* Navigation */
 .navbar {
     position: fixed;
     top: 0;
@@ -20,7 +20,7 @@ body {
     padding: 40px 0; 
     background-color: transparent;
     z-index: 999;
-    }
+}
 
 .navbar-container {
     background-color: #ffeef2;
@@ -29,17 +29,15 @@ body {
     align-items: center;
     padding: 10px 30px;
     max-width: 1000px;
-    margin: 0 auto; 
+    margin: 0 auto;
     border-radius: 12px;
-    box-sizing: border-box; 
-    width: 95%;
 }
 
 .nav-icon img {
     width: 35px;
 }
 
-/* Nan Menu (Desktop) */
+/* Nav Menu (Desktop) */
 .nav-menu {
     display: flex;
     gap: 30px;
@@ -67,11 +65,57 @@ body {
     cursor: pointer;
 }
 
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 70px;
+        right: 30px;
+        background-color: #ffeef2;
+        width: 200px;
+        border-radius: 10px;
+        padding: 20px 0;
+        display: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Padding top untuk body agar konten tidak tertutup navbar saat mobile */
+    body {
+        padding-top: 100px; 
+    }
+}
+
+/* Container Umum untuk Konten Utama */
+/* Menambahkan class ini untuk memusatkan seluruh konten utama */
+.container {
+    max-width: 1000px; /* Lebar maksimum konten */
+    width: 95%; /* Responsif, 95% dari lebar viewport */
+    padding-top: 20px; /* Padding atas */
+    padding-bottom: 200px; /* Padding bawah, beri ruang untuk footer */
+    display: flex; /* Menggunakan Flexbox */
+    flex-direction: column; /* Tata letak kolom */
+    align-items: center; /* Pusatkan item secara horizontal dalam kolom */
+    gap: 50px; /* Jarak antar bagian (hero, photo-section, photobooth-section) */
+    margin: 0 auto; /* Pusatkan container itu sendiri */
+    box-sizing: border-box; /* Pastikan padding disertakan dalam lebar/tinggi elemen */
+}
+
+
 /* Hero */
 .hero {
-    margin-top: 90px;
+    margin-top: 100px; /* Sesuaikan dengan navbar fixed */
     text-align: center;
-    padding: 100px 20px 20px;
+    padding: 0px 20px 20px; /* Hapus padding-top karena sudah ada di .container */
     max-width: 1000px; 
     margin-left: auto; 
     margin-right: auto; 
@@ -83,6 +127,7 @@ body {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 20px;
+    padding-top: 60px;
     color: #840018;
 }
 
@@ -106,34 +151,16 @@ body {
     color: #FFBBC7;
 }
 
-/* Responssive */
+/* Responssive untuk Hero (jika perlu penyesuaian spesifik) */
 @media (max-width: 768px) {
-  .nav-menu {
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 70px;
-    right: 30px;
-    background-color: #ffeef2;
-    width: 200px;
-    border-radius: 10px;
-    padding: 20px 0;
-    display: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-
-  .nav-menu.show {
-        display: flex;
-  }
-
-  .hamburger {
-        display: block;
+  .hero h1 {
+    font-size: 2rem; /* Ukuran font lebih kecil untuk mobile */
   }
 }  
 
 /* Photo Section */
 .photo-section {
-    padding: 40px 20px;
+    padding: 0px 20px; /* Hapus padding-top/bottom karena sudah ada di .container */
     max-width: 1000px; 
     margin-left: auto;
     margin-right: auto;
@@ -161,7 +188,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 20px 200px;
+  padding: 0px 20px 0px; /* Hapus padding-top/bottom karena sudah ada di .container */
   max-width: 1000px; 
   margin-left: auto;
   margin-right: auto;
@@ -176,7 +203,7 @@ body {
     background-color: #8a0018;
     padding: 60px 64px;
     gap: 40px;
-    flex-wrap: wrap; /* biar responsif */
+    flex-wrap: wrap; 
 }
 
 .photo-left img {
@@ -260,4 +287,5 @@ footer {
     align-items: center;
     text-align: center;
     bottom: 0;
+    width: 100%;
 }
