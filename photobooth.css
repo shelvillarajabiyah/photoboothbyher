@@ -5,10 +5,10 @@
 }
 
 body {
-    font-family: sans-serif; /* Menggunakan font default karena Poppins dimatikan */
+    font-family: sans-serif; 
     background-color: #FAFAFA;
     color: #840018;
-    padding-top: 120px; /* Memberi jarak dari navbar fixed */
+    padding-top: 120px; 
 }
 
 /* Navigation */
@@ -17,7 +17,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 40px 0; /* padding atas-bawah aja */
+    padding: 40px 0; 
     background-color: transparent;
     z-index: 999;
 }
@@ -90,7 +90,7 @@ body {
     }
 
     body {
-        padding-top: 100px; /* Menyesuaikan padding top untuk mobile */
+        padding-top: 100px; 
     }
 }
 
@@ -104,7 +104,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    margin: 0 auto; /* Pusatkan container */
+    margin: 0 auto; 
 }
 
 /* Page Visibility */
@@ -152,20 +152,32 @@ body {
 
 .video-container {
     width: 100%;
-    height: 100%;
+    height: 0; 
+    padding-bottom: 56.25%; 
     position: relative;
     overflow: hidden;
+    background-color: black; 
 }
 
 #video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transform: scaleX(-1); 
+}
+
+#canvas { 
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     transform: scaleX(-1);
-}
-
-#canvas {
-    display: none;
+    display: none; 
 }
 
 .filter-overlay {
@@ -212,7 +224,7 @@ body {
 }
 
 .thumbnail {
-    width: 80px;
+    width: 80px;  
     height: 60px;
     border-radius: 8px;
     overflow: hidden;
@@ -223,7 +235,7 @@ body {
 .thumbnail img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; 
 }
 
 .fullscreen-btn {
@@ -330,22 +342,22 @@ body {
 .btn-done:hover { background: #840018; color: white; transform: translateY(-2px); }
 
 /* Controls Area */
-.action-buttons-sidebar { /* New class for buttons inside sidebar */
+.action-buttons-sidebar { 
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    align-items: flex-start; /* Align buttons to the start */
-    margin-top: 20px; /* Space from filters */
+    align-items: flex-start; 
+    margin-top: 20px; 
 }
 
 .action-buttons-sidebar .btn {
-    width: 100%; /* Make buttons full width in sidebar */
+    width: 100%; 
 }
 
 /* Customize Page */
 .customize-container {
-    margin: 0px 0px; /* Jarak dari navbar sudah ditangani body padding */
+    margin: 0px 0px; 
     background: white;
     border-radius: 20px;
     padding: 30px;
@@ -375,8 +387,8 @@ body {
 }
 
 .strip-photo {
-    width: 160px;
-    height: 120px;
+    width: 160px; 
+    height: 120px; 
     background: #ddd;
     border-radius: 5px;
     overflow: hidden;
@@ -385,7 +397,7 @@ body {
 .strip-photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; 
     display: block;
 }
 
@@ -487,25 +499,25 @@ body {
 /* Responsive Global and Main Layout */
 @media (max-width: 768px) {
     .main-content-area {
-        flex-direction: column; /* Kamera dan filter menumpuk di mobile */
+        flex-direction: column; 
         align-items: center;
     }
     .photobooth-container {
-        margin-top: 0; /* Tidak perlu margin top di mobile karena body sudah ada padding */
+        margin-top: 0; 
     }
     .filter-controls-sidebar {
-        width: 100%; /* Sidebar filter mengambil lebar penuh di mobile */
-        max-width: 500px; /* Batasi lebar agar tidak terlalu besar */
-        align-items: center; /* Pusatkan konten sidebar */
-        padding-top: 0; /* Hapus padding top tambahan di mobile */
+        width: 100%; 
+        max-width: 500px; 
+        align-items: center; 
+        padding-top: 0; 
     }
     .filter-section h3 {
-        text-align: center; /* Pusatkan teks filter */
+        text-align: center; 
     }
     .filters {
-        justify-content: center; /* Pusatkan tombol filter */
+        justify-content: center; 
     }
-    .action-buttons-sidebar { /* Tombol aksi menumpuk di mobile */
+    .action-buttons-sidebar { 
         align-items: center;
     }
 
@@ -521,7 +533,7 @@ body {
         margin-top: 20px;
     }
     .customize-container {
-        margin: 0; /* Sesuaikan margin untuk mobile */
+        margin: 0; 
     }
 }
 

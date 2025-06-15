@@ -17,7 +17,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 40px 0; /* padding atas-bawah aja */
+    padding: 40px 0; 
     background-color: transparent;
     z-index: 999;
     }
@@ -29,8 +29,10 @@ body {
     align-items: center;
     padding: 10px 30px;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 0 auto; 
     border-radius: 12px;
+    box-sizing: border-box; 
+    width: 95%;
 }
 
 .nav-icon img {
@@ -70,6 +72,11 @@ body {
     margin-top: 90px;
     text-align: center;
     padding: 100px 20px 20px;
+    max-width: 1000px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 100%; 
+    box-sizing: border-box; 
 }
 
 .hero h1 {
@@ -126,7 +133,12 @@ body {
 
 /* Photo Section */
 .photo-section {
-    padding: 40px 20px; 
+    padding: 40px 20px;
+    max-width: 1000px; 
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .photo-grid {
@@ -134,12 +146,14 @@ body {
     justify-content: center;
     gap: 60px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .photo-grid img {
-    width: 280px;
+    width: 280px; 
     height: 410px;
     object-fit: cover;
+    display: block; 
 }
 
 /* Photobooth Section */
@@ -148,22 +162,30 @@ body {
   align-items: center;
   justify-content: center;
   padding: 100px 20px 200px;
+  max-width: 1000px; 
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .photobooth-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #8a0017; /* warna latar belakang merah tua */
+    background-color: #8a0018;
     padding: 60px 64px;
     gap: 40px;
-    flex-wrap: wrap; /* biar responsif */
+    flex-wrap: wrap; 
 }
 
-.photo-left img,
+.photo-left img {
+    max-width: auto;
+    height: 300px;
+}
 .booth-center img {
-  max-width: auto;
-  height: 450px;
+    max-width: auto;
+    height: 450px;
 }
 
 .button-right {

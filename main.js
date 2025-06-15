@@ -6,14 +6,14 @@ const hamburger = document.getElementById('hamburger');
       navMenu.classList.toggle('show');
     });
 
-// --- Tambahan untuk tombol Upload di index.html ---
+// --- Menambah tombol Upload di index.html ---
 const mainUploadBtn = document.getElementById('main-upload-btn'); //
 const mainPhotoUploadInput = document.getElementById('main-photo-upload-input'); //
-const totalPhotosForUpload = 3; // Pastikan jumlah ini konsisten dengan photobooth.js
+const totalPhotosForUpload = 3; 
 
 if (mainUploadBtn && mainPhotoUploadInput) { //
     mainUploadBtn.addEventListener('click', () => { //
-        mainPhotoUploadInput.click(); // Memicu klik pada input file tersembunyi
+        mainPhotoUploadInput.click(); // 
     });
 
     mainPhotoUploadInput.addEventListener('change', handleMainPhotoUpload); //
@@ -55,7 +55,7 @@ async function handleMainPhotoUpload(event) { //
 
     // Simpan foto yang diunggah ke localStorage
     localStorage.setItem('uploadedPhotos', JSON.stringify(uploadedPhotosData)); //
-    // Tambahkan flag agar photobooth.html tahu ini dari upload
+    // Tambah flag agar photobooth.html tahu ini dari upload
     localStorage.setItem('isFromUpload', 'true'); //
 
     // Arahkan ke halaman photobooth
