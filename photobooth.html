@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photobooth By Her</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="photobooth.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-icon">
+                <img src="assets/logo.png" alt="Logo" />
+            </div>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">home</a></li>
+                <li><a href="photobooth.html" class="active">photobooth</a></li>
+                <li><a href="#">about</a></li>
+                <li><a href="#">contact</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger">
+                &#x2261;
+            </div>
+        </div>
+    </nav>
+
+    <div id="photobooth-page" class="page active">
+        <div class="container">
+            <div class="main-content-area">
+                <div class="photobooth-container">
+                    <div class="camera-section">
+                        <div class="video-container">
+                            <video id="video" autoplay muted playsinline></video>
+                            <div class="filter-overlay" id="filter-overlay"></div>
+                            <canvas id="canvas" style="display: none;"></canvas>
+                            <div class="countdown" id="countdown"></div>
+                            <div class="photo-count" id="photo-count"></div>
+                            <div class="thumbnails" id="thumbnails"></div>
+                            <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-controls-sidebar">
+                    <div class="filter-section">
+                        <h3>Pilih filter</h3>
+                        <div class="filters">
+                            <div class="filter-btn filter-normal active" onclick="setFilter('normal')"></div>
+                            <div class="filter-btn filter-bw" onclick="setFilter('bw')"></div>
+                            <div class="filter-btn filter-warm" onclick="setFilter('warm')"></div>
+                            <div class="filter-btn filter-golden" onclick="setFilter('golden')"></div>
+                            <div class="filter-btn filter-cool" onclick="setFilter('cool')"></div>
+                            <div class="filter-btn filter-vintage" onclick="setFilter('vintage')"></div>
+                        </div>
+                    </div>
+                    <div class="action-buttons-sidebar">
+                        <button class="btn btn-start" id="start-btn" onclick="startPhotoSession()">Start Photos</button>
+                        <button class="btn btn-retake" id="retake-btn" onclick="retakePhotos()" style="display: none;">Retake</button>
+                        <button class="btn btn-done" id="done-btn" onclick="goToCustomize()" style="display: none;">DONE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="customize-page" class="page">
+        <div class="container">
+            <div class="customize-container">
+                <div class="preview-section">
+                    <div class="photo-strip" id="photo-strip">
+                        <div class="strip-photos" id="strip-photos">
+                            <div class="strip-photo"><img id="strip-img-1" src="" alt="Photo 1"></div>
+                            <div class="strip-photo"><img id="strip-img-2" src="" alt="Photo 2"></div>
+                            <div class="strip-photo"><img id="strip-img-3" src="" alt="Photo 3"></div>
+                        </div>
+                        <div class="strip-branding">
+                            <div>Photobooth By Her</div>
+                            <div id="strip-date"></div>
+                        </div>
+                    </div>
+
+                    <div class="customize-options">
+                        <div class="option-group">
+                            <h3>🎨 Warna Bingkai</h3>
+                            <div class="color-grid">
+                                <div class="color-option active" style="background: #8b0000" onclick="setFrameColor('#8b0000')"></div>
+                                <div class="color-option" style="background: #ff69b4" onclick="setFrameColor('#ff69b4')"></div>
+                                <div class="color-option" style="background: #87ceeb" onclick="setFrameColor('#87ceeb')"></div>
+                                <div class="color-option" style="background: #98fb98" onclick="setFrameColor('#98fb98')"></div>
+                                <div class="color-option" style="background: #dda0dd" onclick="setFrameColor('#dda0dd')"></div>
+                                <div class="color-option" style="background: #f0e68c" onclick="setFrameColor('#f0e68c')"></div>
+                                <div class="color-option" style="background: #000000" onclick="setFrameColor('#000000')"></div>
+                                <div class="color-option" style="background: #ffffff; border: 1px solid #ddd" onclick="setFrameColor('#ffffff')"></div>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <h3>📷 Bentuk Foto</h3>
+                            <div class="shape-grid">
+                                <div class="shape-option active" style="background: #ff69b4; border-radius: 4px" onclick="setPhotoShape('rectangle')"></div>
+                                <div class="shape-option" style="background: #87ceeb; border-radius: 50%" onclick="setPhotoShape('circle')"></div>
+                                <div class="shape-option" style="background: #98fb98; border-radius: 20%" onclick="setPhotoShape('rounded')"></div>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <h3>✨ Stiker</h3>
+                            <div class="sticker-grid">
+                                <div class="sticker-option" style="background: #ff69b4" onclick="addSticker('❤️')">❤️</div>
+                                <div class="sticker-option" style="background: #87ceeb" onclick="addSticker('⭐')">⭐</div>
+                                <div class="sticker-option" style="background: #98fb98" onclick="addSticker('🌟')">🌟</div>
+                                <div class="sticker-option" style="background: #dda0dd" onclick="addSticker('💫')">💫</div>
+                                <div class="sticker-option" style="background: #f0e68c" onclick="addSticker('✨')">✨</div>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <h3>📅 Opsi Tanggal/Waktu</h3>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" id="add-date" checked onchange="toggleDate()"> Tambah Tanggal</label>
+                                <label><input type="checkbox" id="add-time" onchange="toggleTime()"> Tambah Waktu</label>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <h3>🌐 Logo</h3>
+                            <div class="language-buttons">
+                                <button class="lang-btn active" onclick="setLanguage('ENG')">ENG</button>
+                                <button class="lang-btn" onclick="setLanguage('KOR')">KOR</button>
+                                <button class="lang-btn" onclick="setLanguage('CN')">CN</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-actions">
+                    <button class="btn btn-retake" onclick="goBackToPhotobooth()">Retake</button>
+                    <button class="btn btn-done" onclick="downloadPhotos()">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>© 2025 Photobooth By Her. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="photobooth.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</body>
+</html>

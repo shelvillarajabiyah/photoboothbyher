@@ -1,0 +1,541 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif; /* Menggunakan font default karena Poppins dimatikan */
+    background-color: #FAFAFA;
+    color: #840018;
+    padding-top: 120px; /* Memberi jarak dari navbar fixed */
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 0; /* padding atas-bawah aja */
+    background-color: transparent;
+    z-index: 999;
+}
+
+.navbar-container {
+    background-color: #ffeef2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+.nav-icon img {
+    width: 35px;
+}
+
+/* Nav Menu (Desktop) */
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #a0a0a0;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-menu a.active,
+.nav-menu a:hover {
+    color: #840018;
+    font-weight: 600;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    color: #840018;
+    cursor: pointer;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 70px;
+        right: 30px;
+        background-color: #ffeef2;
+        width: 200px;
+        border-radius: 10px;
+        padding: 20px 0;
+        display: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    body {
+        padding-top: 100px; /* Menyesuaikan padding top untuk mobile */
+    }
+}
+
+/* General Container for Pages */
+.container {
+    max-width: 1000px;
+    width: 95%;
+    padding-top: 20px;
+    padding-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 0 auto; /* Pusatkan container */
+}
+
+/* Page Visibility */
+.page {
+    display: none;
+    width: 100%;
+}
+.page.active {
+    display: block;
+}
+
+/* Main Content Area: Camera and Filters Layout */
+.main-content-area {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Photobooth Container (Red Border) */
+.photobooth-container {
+    max-width: 600px;
+    width: 100%;
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border: 10px solid #840018;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.camera-section {
+    position: relative;
+    background: #000;
+    aspect-ratio: 16/9;
+    width: 100%;
+    max-width: 900px;
+}
+
+.video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+#canvas {
+    display: none;
+}
+
+.filter-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.countdown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 20px rgba(0,0,0,0.8);
+    z-index: 10;
+    display: none;
+}
+
+.photo-count {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 0px;
+    font-weight: 500;
+}
+
+.thumbnails {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fullscreen-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.7);
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Filter Controls Sidebar */
+.filter-controls-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 0;
+    min-width: fit-content;
+    width: auto;
+    max-width: none;
+    text-align: left;
+    align-self: flex-start;
+}
+
+.filter-section h3 {
+    padding-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    padding-bottom: 0;
+}
+
+.filter-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn.active {
+    border-color: #840018;
+    transform: scale(1.1);
+}
+
+.filter-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Filter Styles */
+.filter-btn.filter-normal { background: linear-gradient(45deg, #666, #999); }
+.filter-btn.filter-bw { background: linear-gradient(45deg, #000, #666); }
+.filter-btn.filter-warm { background: linear-gradient(45deg, #ff9500, #ffb347); }
+.filter-btn.filter-golden { background: linear-gradient(45deg, #ffd700, #ffed4e); }
+.filter-btn.filter-cool { background: linear-gradient(45deg, #4169e1, #87ceeb); }
+.filter-btn.filter-vintage { background: linear-gradient(45deg, #8b4513, #daa520); }
+
+#video.filter-bw { filter: grayscale(100%); }
+#video.filter-warm { filter: sepia(30%) saturate(150%) hue-rotate(15deg); }
+#video.filter-golden { filter: sepia(60%) saturate(200%) brightness(120%) contrast(110%) hue-rotate(25deg); }
+#video.filter-cool { filter: hue-rotate(180deg) saturate(120%); }
+#video.filter-vintage { filter: sepia(50%) contrast(120%) brightness(110%) saturate(130%); }
+
+.btn {
+    padding: 8px 24px;
+    border: none;
+    border-radius: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.btn-retake { background: #840018; color: white; }
+.btn-retake:hover { background: #840018; transform: translateY(-2px); }
+
+.btn-start { background: #840018; color: white; }
+.btn-start:hover { background: #840018; transform: translateY(-2px); }
+
+.btn-done { background: transparent; color: #840018; border: 2px solid #840018; }
+.btn-done:hover { background: #840018; color: white; transform: translateY(-2px); }
+
+/* Controls Area */
+.action-buttons-sidebar { /* New class for buttons inside sidebar */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: flex-start; /* Align buttons to the start */
+    margin-top: 20px; /* Space from filters */
+}
+
+.action-buttons-sidebar .btn {
+    width: 100%; /* Make buttons full width in sidebar */
+}
+
+/* Customize Page */
+.customize-container {
+    margin: 0px 0px; /* Jarak dari navbar sudah ditangani body padding */
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.preview-section {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.photo-strip {
+    background: #840018;
+    padding: 20px;
+    border-radius: 0;
+    min-width: 200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.strip-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.strip-photo {
+    width: 160px;
+    height: 120px;
+    background: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.strip-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.strip-photo img.filter-bw { filter: grayscale(100%); }
+.strip-photo img.filter-warm { filter: sepia(30%) saturate(150%) hue-rotate(15deg); }
+.strip-photo img.filter-golden { filter: sepia(60%) saturate(200%) brightness(120%) contrast(110%) hue-rotate(25deg); }
+.strip-photo img.filter-cool { filter: hue-rotate(180deg) saturate(120%); }
+.strip-photo img.filter-vintage { filter: sepia(50%) contrast(120%) brightness(110%) saturate(130%); }
+
+.strip-branding {
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.customize-options {
+    flex: 1;
+}
+
+.option-group {
+    margin-bottom: 25px;
+}
+
+.option-group h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.color-grid, .shape-grid, .sticker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    gap: 8px;
+    max-width: 400px;
+}
+
+.color-option, .shape-option, .sticker-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.color-option.active, .shape-option.active, .sticker-option.active {
+    border-color: #333;
+    transform: scale(1.1);
+}
+
+.shape-option {
+    border-radius: 4px;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.checkbox-group input:checked {
+    accent-color: #840018;
+}
+
+.checkbox-group input {
+    width: 18px;
+    height: 18px;
+}
+
+.language-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.lang-btn {
+    padding: 8px 16px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+    border-color: #840018;
+    background: #840018;
+    color: white;
+}
+
+.final-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Responsive Global and Main Layout */
+@media (max-width: 768px) {
+    .main-content-area {
+        flex-direction: column; /* Kamera dan filter menumpuk di mobile */
+        align-items: center;
+    }
+    .photobooth-container {
+        margin-top: 0; /* Tidak perlu margin top di mobile karena body sudah ada padding */
+    }
+    .filter-controls-sidebar {
+        width: 100%; /* Sidebar filter mengambil lebar penuh di mobile */
+        max-width: 500px; /* Batasi lebar agar tidak terlalu besar */
+        align-items: center; /* Pusatkan konten sidebar */
+        padding-top: 0; /* Hapus padding top tambahan di mobile */
+    }
+    .filter-section h3 {
+        text-align: center; /* Pusatkan teks filter */
+    }
+    .filters {
+        justify-content: center; /* Pusatkan tombol filter */
+    }
+    .action-buttons-sidebar { /* Tombol aksi menumpuk di mobile */
+        align-items: center;
+    }
+
+    .preview-section {
+        flex-direction: column;
+    }
+    .thumbnails {
+        position: relative;
+        right: auto;
+        top: auto;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .customize-container {
+        margin: 0; /* Sesuaikan margin untuk mobile */
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #840018;
+    color: #ffeef2;
+    font-size: 12px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+
+}
