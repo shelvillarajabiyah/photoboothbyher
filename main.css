@@ -9,6 +9,9 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #FAFAFA;
     color: #840018;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* Navigation */
@@ -29,8 +32,10 @@ body {
     align-items: center;
     padding: 10px 30px;
     max-width: 1000px;
+    width: calc(100% - 40px);
     margin: 0 auto;
     border-radius: 12px;
+    box-sizing: border-box;
 }
 
 .nav-icon img {
@@ -99,7 +104,8 @@ body {
     margin-top: 90px;
     text-align: center;
     padding: 100px 20px 20px;
-    max-width: 1000px; 
+    max-width: 800px;
+    width: calc(100% - 40px); 
     margin-left: auto; 
     margin-right: auto; 
     width: 100%; 
@@ -111,6 +117,7 @@ body {
     font-weight: 700;
     margin-bottom: 20px;
     color: #840018;
+    word-wrap: break-word;
 }
 
 .hero p {
@@ -118,6 +125,7 @@ body {
     max-width: 700px;
     margin: 0 auto;
     color: #840018;
+    word-wrap: break-word;
 }
 
 .down-arrow {
@@ -162,6 +170,7 @@ body {
 .photo-section {
     padding: 40px 20px;
     max-width: 1000px; 
+    width: calc(100% - 40px);
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -171,12 +180,13 @@ body {
 .photo-grid {
     display: flex;
     justify-content: center;
-    gap: 60px;
+    gap: 40px;
     flex-wrap: wrap;
     width: 100%;
 }
 
 .photo-grid img {
+    max-width: 100%;
     width: 280px; 
     height: 410px;
     object-fit: cover;
@@ -190,6 +200,7 @@ body {
   justify-content: center;
   padding: 100px 20px 200px;
   max-width: 1000px; 
+  width: calc(100% - 40px);
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -287,4 +298,5 @@ footer {
     align-items: center;
     text-align: center;
     bottom: 0;
+    width: 100%;
 }
