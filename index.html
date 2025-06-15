@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="nav-icon">
@@ -29,46 +30,48 @@
         </div>
     </nav>
 
-    <div class="container">
-        <section class="hero">
-            <h1>PHOTOBOOTH BY HER</h1>
-            <p><em>Life is good</em> — Take some photo with your favorite kind of silence the one who makes your heart feel like glitter the moment your eyes meet today.</p>
-            <a href="#photobooth" class="down-arrow">
-                <i class="fas fa-angle-down"></i>
-            </a>
-        </section>
+    <!-- Hero -->
+    <section class="hero">
+        <h1>PHOTOBOOTH BY HER</h1>
+        <p><em>Life is good</em> — Take some photo with your favorite kind of silence the one who makes your heart feel like glitter the moment your eyes meet today.</p>
+        <a href="#photobooth" class="down-arrow">
+            <i class="fas fa-angle-down"></i>
+        </a>
+    </section>
 
-        <section class="photo-section">
-            <div class="photo-grid">
-                <img src="assets/photo2.png" alt="Photo 1">
-                <img src="assets/photo3.png" alt="Photo 2">
-                <img src="assets/photo4.png" alt="Photo 3">
+    <!-- Photo Section -->
+    <section class="photo-section">
+        <div class="photo-grid">
+            <img src="assets/photo2.png" alt="Photo 1">
+            <img src="assets/photo3.png" alt="Photo 2">
+            <img src="assets/photo4.png" alt="Photo 3">
+        </div>
+    </section>
+
+    <!-- Photobooth Section -->
+    <section class="photobooth-section" id="photobooth">
+        <div class="photobooth-container">
+            <div class="photo-left">
+                <img src="assets/photo1.png" alt="Photo Strip" />
             </div>
-        </section>
 
-        <section class="photobooth-section" id="photobooth">
-            <div class="photobooth-container">
-                <div class="photo-left">
-                    <img src="assets/photo1.png" alt="Photo Strip" />
-                </div>
-
-                <div class="booth-center">
-                    <img src="assets/photo6.png" alt="Photobooth" />
-                </div>
-
-                <div class="button-right">
-                    <a href="photobooth.html" class="start-btn">Start</a>
-                    <a class="upload-btn" id="main-upload-btn">Upload</a>
-                </div>
+            <div class="booth-center">
+                <img src="assets/photo6.png" alt="Photobooth" />
             </div>
-        </section>
-    </div> <footer>
+
+            <div class="button-right">
+                <a href="photobooth.html" class="start-btn">Start</a>
+                <a class="upload-btn" id="main-upload-btn">Upload</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
         <div class="footer-bottom">
             <p>© 2025 Photobooth By Her. All rights reserved.</p>
         </div>
     </footer>
-
-    <input type="file" multiple accept="image/*" id="main-photo-upload-input" style="display: none;">
 
     <script src="main.js"></script>
 </body>
