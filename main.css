@@ -6,13 +6,10 @@
     
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: sans-serif; 
     background-color: #FAFAFA;
     color: #840018;
-    margin: 0;
-    padding-top: 100px;
-    box-sizing: border-box;
-    overflow-x: hidden;
+    padding-top: 120px; 
 }
 
 /* Navigation */
