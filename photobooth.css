@@ -369,6 +369,8 @@ body {
     gap: 30px;
     margin-bottom: 30px;
     align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .photo-strip {
@@ -377,18 +379,25 @@ body {
     border-radius: 0;
     min-width: 200px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 240px;
+    aspect-ratio: 240 / 520;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .strip-photos {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .strip-photo {
-    width: 160px; 
-    height: 120px; 
+    width: 100%; 
+    height: auto; 
+    aspect-ratio: 160 / 120;
     background: #ddd;
     border-radius: 5px;
     overflow: hidden;
@@ -399,6 +408,16 @@ body {
     height: 100%;
     object-fit: cover; 
     display: block;
+}
+
+@media (max-width: 768px) {
+    .preview-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .photo-strip {
+        width: 240px; 
+    }
 }
 
 .strip-photo img.filter-bw { filter: grayscale(100%); }
@@ -426,7 +445,7 @@ body {
     margin-bottom: 15px;
     color: #333;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 550;
 }
 
 .color-grid, .shape-grid, .sticker-grid {
@@ -440,7 +459,7 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -548,6 +567,5 @@ footer {
     align-items: center;
     text-align: center;
     bottom: 0;
-    width: 100%;
     margin-top: 200px;
 }

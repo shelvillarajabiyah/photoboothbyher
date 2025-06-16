@@ -296,6 +296,10 @@ function setLanguage(lang) { //
 
 function downloadPhotos() { //
     const strip = document.getElementById('photo-strip'); //
+    const computedStyle = getComputedStyle(strip);
+    const stripWidth = parseFloat(computedStyle.width);
+    const stripHeight = parseFloat(computedStyle.height);
+    
     html2canvas(strip, { //
         allowTaint: true, //
         useCORS: true, //
