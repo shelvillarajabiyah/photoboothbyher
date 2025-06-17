@@ -290,20 +290,24 @@ function setLanguage(lang) { //
     switch (lang) { //
         case 'KOR': brandingTextEl.textContent = '포토부스'; break; //
         case 'CN': brandingTextEl.textContent = '照相亭'; break; //
-        default: brandingTextEl.textContent = 'Photobooth By Her'; // Menggunakan branding default yang ada di HTML
+        default: brandingTextEl.textContent = 'Photobooth By Her'; // 
     }
 }
 
 function downloadPhotos() { //
     const strip = document.getElementById('photo-strip'); //
-    const computedStyle = getComputedStyle(strip);
-    const stripWidth = parseFloat(computedStyle.width);
-    const stripHeight = parseFloat(computedStyle.height);
+    const rect = strip.getBoundingClientRect();
+    const stripWidth = rect.width; //
+    const stripHeight = rect.height; //
+
+    const outputScale = 3;
     
     html2canvas(strip, { //
         allowTaint: true, //
         useCORS: true, //
-        scale: 2, //
+        width: stripWidth, //
+        height: stripHeight, //
+        scale: outputScale, //
         backgroundColor: null //
     }).then(canvas => { //
         const link = document.createElement('a'); //
@@ -334,8 +338,8 @@ function handleLoadedFromUpload() { //
     if (isFromUpload === 'true' && uploadedPhotosJson) { //
         try { //
             photos = JSON.parse(uploadedPhotosJson); //
-            localStorage.removeItem('uploadedPhotos'); // Hapus dari localStorage setelah digunakan
-            localStorage.removeItem('isFromUpload'); // Hapus flag
+            localStorage.removeItem('uploadedPhotos'); // 
+            localStorage.removeItem('isFromUpload'); // 
 
             // Sembunyikan elemen kamera karena kita menggunakan foto yang diunggah
             if (stream) { //
