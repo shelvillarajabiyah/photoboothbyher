@@ -285,3 +285,121 @@ footer {
     text-align: center;
     bottom: 0;
 }
+
+/* Keyframes for animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply animations to elements */
+
+/* Hero Section */
+/* These elements should also start hidden by default */
+.hero h1,
+.hero p,
+.hero .down-arrow {
+    opacity: 0;
+}
+
+.hero.animate h1 {
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+.hero.animate p {
+    animation: fadeInDown 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.hero.animate .down-arrow {
+    animation: fadeInDown 1s ease-out forwards;
+    animation-delay: 0.6s;
+}
+
+/* Photo Section */
+/* These elements should also start hidden by default */
+.photo-grid img {
+    opacity: 0;
+}
+
+.photo-section.animate .photo-grid img { /* Apply animation when .photo-section has .animate */
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+.photo-section.animate .photo-grid img:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.photo-section.animate .photo-grid img:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.photo-section.animate .photo-grid img:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Photobooth Section (Existing - no changes needed here as it's already set up correctly for the .animate class) */
+.photobooth-section .photo-left {
+    opacity: 0; /* Start hidden */
+}
+
+.photobooth-section .booth-center {
+    opacity: 0; /* Start hidden */
+}
+
+.photobooth-section .button-right {
+    opacity: 0; /* Start hidden */
+}
+
+.photobooth-section.animate .photo-left {
+    animation: fadeInLeft 1s ease-out forwards;
+}
+
+.photobooth-section.animate .booth-center {
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.photobooth-section.animate .button-right {
+    animation: fadeInRight 1s ease-out forwards;
+    animation-delay: 0.6s;
+}

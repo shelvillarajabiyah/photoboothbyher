@@ -65,3 +65,31 @@ async function handleMainPhotoUpload(event) { //
     mainPhotoUploadInput.value = ''; //
 }
 // --- Akhir tambahan untuk tombol Upload di index.html ---
+
+// Intersection Observer for section animations
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all sections that should animate on scroll
+    const sectionsToAnimate = document.querySelectorAll('.hero, .photo-section, .photobooth-section'); //
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add the 'animate' class when the section comes into view
+                entry.target.classList.add('animate'); //
+            } else {
+                // Remove the 'animate' class when the section goes out of view
+                // This allows the animation to play again when it re-enters the viewport
+                entry.target.classList.remove('animate'); //
+            }
+        });
+    }, {
+        threshold: 0.2 // Trigger when 20% of the section is visible
+    });
+
+    // Observe each section
+    sectionsToAnimate.forEach(section => {
+        if (section) {
+            observer.observe(section); //
+        }
+    });
+});
